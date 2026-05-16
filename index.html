@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Charis Charity Organization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#0a0a0a;--teal:#1a6b6b;--teal-light:#29b8d8;--orange:#e8761a;--red:#cc3a1a;
+  --white:#fafafa;--offwhite:#f2f5f5;--gray:#4a6060;--border:#c8dede;
+  --serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--black);font-size:16px;line-height:1.7}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(41,184,216,0.15);padding:0 2rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+.nav-logo img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(41,184,216,0.3)}
+.nav-logo-text{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--white);letter-spacing:0.03em;line-height:1.2}
+.nav-logo-text span{display:block;font-size:0.65rem;font-family:var(--sans);font-weight:300;color:rgba(255,255,255,0.4);letter-spacing:0.12em;text-transform:uppercase}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{font-size:0.78rem;color:rgba(255,255,255,0.5);text-decoration:none;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--teal-light)}
+.nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:0.5rem 1.25rem;border-radius:2px;font-size:0.78rem!important;font-weight:500!important;transition:opacity 0.2s!important}
+.nav-cta:hover{opacity:0.85;color:var(--white)!important}
+
+section{padding:7rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:0.75rem;font-weight:400}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.15;margin-bottom:1.5rem}
+
+/* HERO */
+#home{padding:0;min-height:100vh;display:flex;align-items:center;background:var(--black);position:relative;overflow:hidden}
+.hero-rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;pointer-events:none;opacity:0.07}
+.hero-rings svg{width:600px;height:600px;flex-shrink:0;margin-right:-80px}
+.hero-content{position:relative;max-width:1100px;margin:0 auto;padding:0 2rem;padding-top:68px;width:100%}
+.hero-logo-lockup{display:flex;align-items:center;gap:1.25rem;margin-bottom:2.5rem}
+.hero-logo-lockup img{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid rgba(41,184,216,0.25)}
+.hero-logo-lockup-text{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal-light);font-weight:400}
+.hero-title{font-family:var(--serif);font-size:clamp(3rem,7vw,5.5rem);color:var(--white);line-height:1.05;margin-bottom:2rem;font-weight:400}
+.hero-title .accent2{color:var(--orange);font-style:italic}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.5);max-width:500px;margin-bottom:0.5rem;font-weight:300;line-height:1.85}
+.hero-tagline{font-size:0.8rem;letter-spacing:0.12em;color:var(--teal-light);text-transform:uppercase;margin-bottom:2.5rem;font-style:italic}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--orange);color:var(--white);padding:0.9rem 2rem;font-size:0.875rem;font-weight:500;letter-spacing:0.04em;text-decoration:none;border-radius:2px;display:inline-block;transition:opacity 0.2s}
+.btn-primary:hover{opacity:0.85}
+.btn-outline{border:1px solid rgba(41,184,216,0.4);color:var(--teal-light);padding:0.9rem 2rem;font-size:0.875rem;font-weight:400;letter-spacing:0.04em;text-decoration:none;border-radius:2px;display:inline-block;transition:all 0.2s}
+.btn-outline:hover{border-color:var(--teal-light);background:rgba(41,184,216,0.06)}
+.hero-stats{display:flex;gap:3rem;margin-top:5rem;padding-top:3rem;border-top:1px solid rgba(41,184,216,0.12);flex-wrap:wrap}
+.stat-num{font-family:var(--serif);font-size:2.5rem;color:var(--teal-light);font-weight:400;line-height:1}
+.stat-label{font-size:0.72rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.25rem}
+
+/* ABOUT */
+#about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-text p{color:var(--gray);font-weight:300;margin-bottom:1rem;line-height:1.9}
+.mission-box{background:var(--teal);padding:2.5rem;border-radius:2px;color:var(--white);margin-top:2rem;border-left:4px solid var(--orange)}
+.mission-box .label{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.75rem}
+.mission-box blockquote{font-family:var(--serif);font-size:1.2rem;font-style:italic;line-height:1.6;color:rgba(255,255,255,0.9)}
+.about-pillars{display:flex;flex-direction:column;gap:1.25rem}
+.pillar{padding:1.75rem;border:1px solid var(--border);border-radius:2px;transition:border-color 0.2s,background 0.2s}
+.pillar:hover{border-color:var(--teal);background:rgba(26,107,107,0.03)}
+.pillar-icon{font-size:1.4rem;color:var(--teal-light);margin-bottom:0.75rem}
+.pillar h3{font-family:var(--serif);font-size:1.05rem;font-weight:400;margin-bottom:0.4rem;color:var(--teal)}
+.pillar p{font-size:0.875rem;color:var(--gray);font-weight:300}
+
+/* GALLERY */
+#gallery{background:var(--black);padding:7rem 2rem}
+#gallery .section-label{color:var(--teal-light)}
+#gallery .section-title{color:var(--white)}
+#gallery .section-title span{color:var(--orange);font-style:italic}
+.gallery-tabs{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.gallery-tab{background:transparent;border:1px solid rgba(41,184,216,0.2);color:rgba(255,255,255,0.45);padding:0.5rem 1.1rem;font-size:0.75rem;font-family:var(--sans);cursor:pointer;border-radius:2px;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s;font-weight:400}
+.gallery-tab:hover{border-color:var(--teal-light);color:var(--teal-light)}
+.gallery-tab.active{background:var(--teal);border-color:var(--teal);color:var(--white);font-weight:500}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.gallery-item{position:relative;overflow:hidden;aspect-ratio:1;cursor:pointer;background:#111}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease,opacity 0.3s;opacity:0.85}
+.gallery-item:hover img{transform:scale(1.05);opacity:1}
+.gallery-item .overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.8) 0%,transparent 50%);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:1rem}
+.gallery-item:hover .overlay{opacity:1}
+.gallery-item .overlay span{font-size:0.72rem;color:rgba(255,255,255,0.8);letter-spacing:0.08em;text-transform:uppercase}
+.gallery-item.wide{grid-column:span 2}
+.gallery-item.tall{grid-row:span 2}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border:1px solid rgba(255,255,255,0.08)}
+.lightbox-close{position:absolute;top:1.5rem;right:1.5rem;background:transparent;border:1px solid rgba(255,255,255,0.2);color:var(--white);width:40px;height:40px;border-radius:2px;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.lightbox-close:hover{background:rgba(255,255,255,0.1)}
+.lightbox-caption{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-size:0.8rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--white);width:44px;height:44px;border-radius:2px;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.lightbox-nav:hover{background:rgba(255,255,255,0.1);border-color:var(--teal-light)}
+.lightbox-prev{left:1.5rem}
+.lightbox-next{right:1.5rem}
+
+/* EVENTS */
+#events{background:var(--offwhite)}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;margin-top:3rem}
+.event-card{background:var(--white);border:1px solid var(--border);border-radius:2px;overflow:hidden;transition:transform 0.2s,border-color 0.2s}
+.event-card:hover{transform:translateY(-3px);border-color:var(--teal)}
+.event-tag{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;padding:0.75rem 1.25rem;border-bottom:1px solid var(--border);color:var(--teal)}
+.event-tag.upcoming{background:var(--teal);color:var(--white)}
+.event-body{padding:1.5rem}
+.event-body h3{font-family:var(--serif);font-size:1.15rem;font-weight:400;margin-bottom:0.6rem}
+.event-body p{font-size:0.875rem;color:var(--gray);font-weight:300;line-height:1.8}
+.event-meta{display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--teal);margin-top:0.875rem}
+
+/* DONATE */
+#donate{background:var(--black)}
+#donate .section-label{color:var(--teal-light)}
+#donate .section-title{color:var(--white)}
+.donate-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.donate-intro p{color:rgba(255,255,255,0.5);font-weight:300;line-height:1.9;margin-bottom:1.25rem}
+.bank-card{background:rgba(26,107,107,0.12);border:1px solid rgba(41,184,216,0.2);border-radius:4px;padding:2rem;margin-top:1.5rem}
+.bank-card-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid rgba(41,184,216,0.15)}
+.bank-card-header i{font-size:22px;color:var(--teal-light)}
+.bank-card-header p{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal-light);font-weight:500}
+.bank-detail{margin-bottom:1.25rem}
+.bank-detail-label{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.3rem;font-weight:400}
+.bank-detail-value{font-size:1.1rem;color:var(--white);font-weight:500}
+.bank-detail-value.acct{font-size:1.6rem;font-family:var(--serif);color:var(--teal-light);letter-spacing:0.1em}
+.copy-btn{background:transparent;border:1px solid rgba(41,184,216,0.25);color:var(--teal-light);padding:0.3rem 0.75rem;font-size:0.72rem;font-family:var(--sans);cursor:pointer;border-radius:2px;margin-left:0.75rem;transition:all 0.15s;letter-spacing:0.05em;vertical-align:middle}
+.copy-btn:hover{background:rgba(41,184,216,0.1);border-color:var(--teal-light)}
+.bank-note{font-size:0.8rem;color:rgba(255,255,255,0.3);margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.06);font-weight:300;line-height:1.7}
+.bank-note a{color:var(--teal-light);text-decoration:none}
+.impact-list{display:flex;flex-direction:column;gap:0.875rem;margin-top:2rem}
+.impact-item{display:flex;align-items:flex-start;gap:0.75rem;padding:1rem;background:rgba(26,107,107,0.15);border-radius:2px;border-left:3px solid var(--teal-light)}
+.impact-item i{font-size:17px;flex-shrink:0;margin-top:3px;color:var(--teal-light)}
+.impact-item p{font-size:0.85rem;color:rgba(255,255,255,0.5);font-weight:300}
+.impact-item strong{color:var(--teal-light);font-weight:500}
+
+/* CONTACT */
+#contact{background:var(--offwhite)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-info p{color:var(--gray);font-weight:300;line-height:1.9;margin-bottom:2rem}
+.contact-items{display:flex;flex-direction:column;gap:1.1rem}
+.contact-item{display:flex;align-items:flex-start;gap:0.875rem;padding-bottom:1.1rem;border-bottom:1px solid var(--border)}
+.contact-item:last-child{border-bottom:none}
+.contact-item i{font-size:17px;color:var(--teal-light);margin-top:3px;flex-shrink:0}
+.contact-item p{font-size:0.875rem;color:var(--gray);font-weight:300}
+.contact-item a{color:var(--teal);text-decoration:none;transition:color 0.2s}
+.contact-item a:hover{color:var(--orange)}
+.contact-form{background:var(--white);padding:2rem;border:1px solid var(--border);border-radius:2px;display:flex;flex-direction:column;gap:1rem}
+.cf-group{display:flex;flex-direction:column;gap:0.35rem}
+.cf-group label{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);font-weight:400}
+.cf-group input,.cf-group textarea{background:var(--offwhite);border:1px solid var(--border);padding:0.75rem 1rem;font-size:0.875rem;font-family:var(--sans);color:var(--black);outline:none;border-radius:2px;transition:border-color 0.2s}
+.cf-group input:focus,.cf-group textarea:focus{border-color:var(--teal-light)}
+.cf-group textarea{resize:vertical;min-height:110px}
+.btn-send{background:var(--teal);color:var(--white);border:none;padding:0.95rem 2rem;font-size:0.875rem;font-family:var(--sans);font-weight:500;letter-spacing:0.04em;cursor:pointer;border-radius:2px;width:100%;margin-top:0.25rem;transition:background 0.2s}
+.btn-send:hover{background:var(--teal-light);color:var(--black)}
+
+footer{background:var(--black);border-top:2px solid var(--teal);padding:2.5rem 2rem;text-align:center}
+.footer-logo{display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:1rem}
+.footer-logo img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid rgba(41,184,216,0.25)}
+.footer-logo span{font-family:var(--serif);font-size:0.95rem;color:var(--white)}
+footer p{font-size:0.78rem;color:rgba(255,255,255,0.2);font-weight:300;letter-spacing:0.04em}
+footer a{color:var(--teal-light);text-decoration:none}
+footer a:hover{color:var(--orange)}
+
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--teal);color:var(--white);padding:1rem 1.5rem;border-radius:2px;font-size:0.875rem;opacity:0;transform:translateY(10px);transition:all 0.3s;pointer-events:none;z-index:9999;border-left:3px solid var(--orange)}
+.toast.show{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <!-- ============================================================
+           LOGO: Replace the src below with your own logo image path
+           e.g. src="logo.png" if you place logo.png next to this file
+           ============================================================ -->
+      <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUBaCwcUltEq2UYAI8cCf4RScBdLz58NuSY-OQaMCOhTvDo_BtzVv6vuPLCWc3qrzm8onCnRe1-Oxr6R8Tb0nkvmUT7CDYKIiu7wQkRsYhb4k-Xl9BHC-DiB7LLkeNl79XRAvVGCpCwsflHdsup4bVkhdkQ25nmAd_NWzU2j7g25i0Wc7UD1hh_i=w16383" alt="Charis logo" onerror="this.style.display='none'">
+      <div class="nav-logo-text">Charis Charity<span>Make Them Smile</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#donate" class="nav-cta">Donate</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO SECTION — Edit the text below to change the homepage
+     ============================================================ -->
+<section id="home">
+  <div class="hero-rings">
+    <svg viewBox="0 0 600 600" fill="none"><circle cx="300" cy="300" r="280" stroke="#29b8d8" stroke-width="1.5"/><circle cx="300" cy="300" r="230" stroke="#1a6b6b" stroke-width="1"/><circle cx="300" cy="300" r="180" stroke="#cc3a1a" stroke-width="1.5"/></svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-logo-lockup">
+      <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUBaCwcUltEq2UYAI8cCf4RScBdLz58NuSY-OQaMCOhTvDo_BtzVv6vuPLCWc3qrzm8onCnRe1-Oxr6R8Tb0nkvmUT7CDYKIiu7wQkRsYhb4k-Xl9BHC-DiB7LLkeNl79XRAvVGCpCwsflHdsup4bVkhdkQ25nmAd_NWzU2j7g25i0Wc7UD1hh_i=w16383" alt="Charis Charity Organization" onerror="this.style.display='none'">
+      <div class="hero-logo-lockup-text">Charis Charity Organization · Nigeria & United Kingdom</div>
+    </div>
+    <h1 class="hero-title">Make Them<br><span class="accent2">Smile.</span></h1>
+    <p class="hero-sub">Empowering widows and improving the lives of the elderly in Nigeria through humanitarian service, poverty alleviation, and community outreach.</p>
+    <p class="hero-tagline">Small Act, Big Healing</p>
+    <div class="hero-actions">
+      <a href="#donate" class="btn-primary">Donate Now</a>
+      <a href="#gallery" class="btn-outline">See Our Work</a>
+    </div>
+    <div class="hero-stats">
+      <!-- Edit the numbers below to update your stats -->
+      <div><div class="stat-num">5+</div><div class="stat-label">Outreaches completed</div></div>
+      <div><div class="stat-num">3</div><div class="stat-label">Cities in 2026</div></div>
+      <div><div class="stat-num">2021</div><div class="stat-label">Year founded</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT SECTION — Edit your mission text and pillars here
+     ============================================================ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">About us</p>
+        <h2 class="section-title">A support system for those who have no one</h2>
+        <p>Charis Charity Organization was founded on a simple conviction — that every elderly person and widow deserves dignity, care, and community, regardless of their circumstances.</p>
+        <p>Operating across Nigeria and the United Kingdom, we run regular outreach programmes delivering food, medical support, and essential supplies to vulnerable individuals in underserved communities.</p>
+        <div class="mission-box">
+          <div class="label">Our mission</div>
+          <blockquote>"To empower widows and improve the lives of the elderly in Nigeria"</blockquote>
+        </div>
+      </div>
+      <div class="about-pillars">
+        <div class="pillar"><div class="pillar-icon"><i class="ti ti-heart"></i></div><h3>Humanitarian Services</h3><p>Delivering essential goods, food, and care to those most in need across Kogi State and beyond.</p></div>
+        <div class="pillar"><div class="pillar-icon"><i class="ti ti-activity"></i></div><h3>Medical Outreach</h3><p>Partnering with hospitals to provide healthcare access for elderly patients who cannot afford treatment.</p></div>
+        <div class="pillar"><div class="pillar-icon"><i class="ti ti-users"></i></div><h3>Community Empowerment</h3><p>Building long-term support networks for widows and the elderly to foster independence and dignity.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY SECTION
+     To add new photos: add a new entry to the `photos` array
+     in the JavaScript below. You need the Google Drive file ID
+     (the long string in the sharing URL) and a category + label.
+     ============================================================ -->
+<section id="gallery">
+  <div class="container">
+    <p class="section-label">Our impact in pictures</p>
+    <h2 class="section-title">Moments that <span>matter</span></h2>
+    <div class="gallery-tabs">
+      <button class="gallery-tab active" onclick="filterGallery('all',this)">All outreaches</button>
+      <button class="gallery-tab" onclick="filterGallery('orphanage',this)">Orphanage 2026</button>
+      <button class="gallery-tab" onclick="filterGallery('medical',this)">Medical 2024</button>
+      <button class="gallery-tab" onclick="filterGallery('rural',this)">Rural 2025</button>
+      <button class="gallery-tab" onclick="filterGallery('idp',this)">IDP Relief 2022</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EVENTS SECTION — Add or edit events here
+     Copy one <div class="event-card"> block to add a new event
+     ============================================================ -->
+<section id="events">
+  <div class="container">
+    <p class="section-label">Our outreaches</p>
+    <h2 class="section-title">From the field</h2>
+    <div class="events-grid">
+      <div class="event-card"><div class="event-tag">Completed · 2026</div><div class="event-body"><h3>Family Edition — Lokoja, Abuja & Lagos</h3><p>Our largest outreach to date, spanning three cities with food distribution, care packages, and community fellowship for widows and the elderly.</p><div class="event-meta"><i class="ti ti-map-pin"></i> Lokoja · Abuja · Lagos, Nigeria</div></div></div>
+      <div class="event-card"><div class="event-tag">Completed · 2025</div><div class="event-body"><h3>Rural Empowerment — Zariagi Community</h3><p>Medical and food outreach delivered to the Zariagi Community at Kabba Junction, providing essential healthcare and nutritional support.</p><div class="event-meta"><i class="ti ti-map-pin"></i> Kabba Junction, Kogi State</div></div></div>
+      <div class="event-card"><div class="event-tag">Completed · 2024</div><div class="event-body"><h3>Medical Outreach — Federal Teaching Hospital</h3><p>Hospital outreach for elderly patients at the Federal Teaching Hospital, Lokoja, providing supplies and personal support.</p><div class="event-meta"><i class="ti ti-map-pin"></i> Lokoja, Kogi State</div></div></div>
+      <div class="event-card"><div class="event-tag">Completed · 2022</div><div class="event-body"><h3>IDP Flood Relief Intervention</h3><p>Emergency relief for internally displaced persons following devastating flooding in Adankolo, delivering critical supplies to affected families.</p><div class="event-meta"><i class="ti ti-map-pin"></i> Adankolo, Lokoja</div></div></div>
+      <div class="event-card"><div class="event-tag">Completed · 2021</div><div class="event-body"><h3>Widow Support Outreach — Aiyetoro</h3><p>Our founding outreach, reaching widows in Aiyetoro, Kogi State with care packages, food, and communal support.</p><div class="event-meta"><i class="ti ti-map-pin"></i> Aiyetoro, Kogi State</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DONATE SECTION — Update bank details here if they change
+     ============================================================ -->
+<section id="donate">
+  <div class="container">
+    <div class="donate-grid">
+      <div class="donate-intro">
+        <p class="section-label">Make a difference</p>
+        <h2 class="section-title">Your gift changes lives</h2>
+        <p>Every contribution directly funds our outreach programmes — from food parcels and medical care to transport and community support for widows and the elderly across Nigeria.</p>
+
+
+      </div>
+      <div>
+        <div class="bank-card">
+          <div class="bank-card-header"><i class="ti ti-building-bank"></i><p>Nigerian bank transfer — Zenith Bank</p></div>
+          <!-- BANK DETAILS — edit here if account details change -->
+          <div class="bank-detail"><div class="bank-detail-label">Account number</div><div class="bank-detail-value acct">1229162027 <button class="copy-btn" onclick="copyAcct()">Copy</button></div></div>
+          <div class="bank-detail"><div class="bank-detail-label">Account name</div><div class="bank-detail-value">Charis Charity Organization</div></div>
+          <div class="bank-detail"><div class="bank-detail-label">Bank</div><div class="bank-detail-value">Zenith Bank</div></div>
+
+        </div>
+        <div style="margin-top:1.5rem;padding:1.25rem;border:1px solid rgba(41,184,216,0.15);border-radius:4px;background:rgba(255,255,255,0.03)">
+          <p style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.5rem">UK / International donors</p>
+          <p style="font-size:0.875rem;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.7">For UK or international transfers, contact us at <a href="mailto:makethemsmile10@gmail.com" style="color:var(--teal-light);text-decoration:none">makethemsmile10@gmail.com</a> or call <a href="tel:+447857092430" style="color:var(--teal-light);text-decoration:none">+44 (0) 785 709 2430</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT SECTION — Update phone/email/social here
+     ============================================================ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-label">Get in touch</p>
+        <h2 class="section-title">We'd love to hear from you</h2>
+        <p>Whether you want to volunteer, partner with us, or simply learn more — reach out and we'll respond as soon as possible.</p>
+        <div class="contact-items">
+          <div class="contact-item"><i class="ti ti-mail"></i><p><a href="mailto:makethemsmile10@gmail.com">makethemsmile10@gmail.com</a></p></div>
+          <div class="contact-item"><i class="ti ti-phone"></i><p>+234 (0) 701 807 2349<br>+234 (0) 803 392 3075<br>+44 (0) 785 709 2430</p></div>
+          <div class="contact-item"><i class="ti ti-map-pin"></i><p>Nigeria · United Kingdom</p></div>
+          <div class="contact-item"><i class="ti ti-brand-instagram"></i><p><a href="https://www.instagram.com/_makethemsmile" target="_blank">@_makethemsmile</a></p></div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="cf-group"><label>Your name</label><input type="text" placeholder="Full name" id="c-name"></div>
+        <div class="cf-group"><label>Email</label><input type="email" placeholder="your@email.com" id="c-email"></div>
+        <div class="cf-group"><label>Subject</label><input type="text" placeholder="How can we help?" id="c-subject"></div>
+        <div class="cf-group"><label>Message</label><textarea placeholder="Your message..." id="c-message"></textarea></div>
+        <button class="btn-send" onclick="handleContact()">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUBaCwcUltEq2UYAI8cCf4RScBdLz58NuSY-OQaMCOhTvDo_BtzVv6vuPLCWc3qrzm8onCnRe1-Oxr6R8Tb0nkvmUT7CDYKIiu7wQkRsYhb4k-Xl9BHC-DiB7LLkeNl79XRAvVGCpCwsflHdsup4bVkhdkQ25nmAd_NWzU2j7g25i0Wc7UD1hh_i=w16383" alt="Charis logo" onerror="this.style.display='none'">
+    <span>Charis Charity Organization</span>
+  </div>
+  <p>© 2026 · Nigeria & United Kingdom · <a href="mailto:makethemsmile10@gmail.com">makethemsmile10@gmail.com</a> · <a href="https://www.instagram.com/_makethemsmile" target="_blank">@_makethemsmile</a></p>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightboxBtn()"><i class="ti ti-x"></i></button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1,event)"><i class="ti ti-chevron-left"></i></button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1,event)"><i class="ti ti-chevron-right"></i></button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// GALLERY PHOTOS
+// To add a new photo:
+//   1. Get the file ID from the Google Drive sharing link
+//      e.g. drive.google.com/file/d/FILE_ID_HERE/view
+//   2. Add a new line: {id:'FILE_ID_HERE', cat:'CATEGORY', label:'Caption text'}
+//   Categories: 'orphanage', 'medical', 'rural', 'idp'
+//   To add a new category, add a tab button in the HTML above too.
+// ============================================================
+const photos = [
+  {id:'1dz0kuIugB929FTtekOg-IvEVKIT5FS9Z', cat:'orphanage', label:'Orphanage Outreach 2026'},
+  {id:'1O_92Z0sw2_ze58pihL_08mbGonZJFoI7', cat:'orphanage', label:'Orphanage Outreach 2026'},
+  {id:'1bBEAalZkDH0_mIBJ4mn0wvxeiUOzFo7z', cat:'orphanage', label:'Orphanage Outreach 2026'},
+  {id:'1Ba3-uyiFBQ0KNYKwF930UYEDjqur0fMn', cat:'medical', label:'Medical Outreach 2024'},
+  {id:'1tBrzI5zivpdE7QCct_wZ8x7nkKwZSCGk', cat:'medical', label:'Medical Outreach 2024'},
+  {id:'1Pg-TKi8VEp9vTHfOUJrm8soJjWLTSdCZ', cat:'medical', label:'Medical Outreach 2024'},
+  {id:'1AWqMlto4tWDsUiDueWjqrl2dPj1S3uAO', cat:'medical', label:'Medical Outreach 2024'},
+  {id:'1BTIy_EGZkKKIxBUdOmWPqoDxuso0EcLW', cat:'medical', label:'Medical Outreach 2024'},
+  {id:'1CE35jpcfXNZdd4DLz-5xaLGIGBF0V0o8', cat:'rural', label:'Rural Empowerment 2025'},
+  {id:'1erkcfrc82HjctsvsTwLr2BFBd6KwWWjJ', cat:'rural', label:'Rural Empowerment 2025'},
+  {id:'1cwWp0hEbUY0WuhLYudWN2ycwFxygNfhK', cat:'rural', label:'Rural Empowerment 2025'},
+  {id:'1AUvHq5ch4Vjlkv6oXBBN3T-uOMMZPzsC', cat:'rural', label:'Rural Empowerment 2025'},
+  {id:'1VRovY8QF8oN7R2zns4zB0ENKfPEHu--K', cat:'rural', label:'Rural Empowerment 2025'},
+  {id:'1tZ1Xo8OqSsB50rBneYD-e9llNciQe15n', cat:'idp', label:'IDP Relief 2022'},
+  {id:'1vDIILhE5De-6e8tSVzOmJYnFN1DvqTL7', cat:'idp', label:'IDP Relief 2022'},
+  {id:'1oHoLLAC60Cby1-5CCuQ8pU6IHHPTSY3p', cat:'idp', label:'IDP Relief 2022'},
+  {id:'1IpqpFujVvLTaQn9PKimk6YNYUd5XL0v7', cat:'idp', label:'IDP Relief 2022'},
+  {id:'1llSVuHdMBPEBf_ef5Zsh_0_EKqXPma6N', cat:'idp', label:'IDP Relief 2022'},
+];
+
+function imgUrl(id){ return `https://drive.google.com/thumbnail?id=${id}&sz=w600`; }
+function imgUrlFull(id){ return `https://drive.google.com/thumbnail?id=${id}&sz=w1200`; }
+
+let lightboxItems = [];
+let lightboxIndex = 0;
+
+function buildGallery(filter){
+  const grid = document.getElementById('galleryGrid');
+  const items = filter === 'all' ? photos : photos.filter(p => p.cat === filter);
+  lightboxItems = items;
+  grid.innerHTML = '';
+  items.forEach((p, i) => {
+    const div = document.createElement('div');
+    div.className = 'gallery-item' + (i === 0 ? ' wide' : i === 3 ? ' tall' : '');
+    div.innerHTML = `<img src="${imgUrl(p.id)}" alt="${p.label}" loading="lazy"><div class="overlay"><span>${p.label}</span></div>`;
+    div.onclick = () => openLightbox(i);
+    grid.appendChild(div);
+  });
+}
+
+function filterGallery(cat, btn){
+  document.querySelectorAll('.gallery-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  buildGallery(cat);
+}
+
+function openLightbox(i){
+  lightboxIndex = i;
+  document.getElementById('lightboxImg').src = imgUrlFull(lightboxItems[i].id);
+  document.getElementById('lightboxCaption').textContent = lightboxItems[i].label;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightboxBtn(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeLightbox(e){
+  if(e.target === document.getElementById('lightbox')) closeLightboxBtn();
+}
+
+function navLightbox(dir, e){
+  e.stopPropagation();
+  lightboxIndex = (lightboxIndex + dir + lightboxItems.length) % lightboxItems.length;
+  document.getElementById('lightboxImg').src = imgUrlFull(lightboxItems[lightboxIndex].id);
+  document.getElementById('lightboxCaption').textContent = lightboxItems[lightboxIndex].label;
+}
+
+document.addEventListener('keydown', e => {
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key === 'Escape') closeLightboxBtn();
+  if(e.key === 'ArrowRight') navLightbox(1, {stopPropagation:()=>{}});
+  if(e.key === 'ArrowLeft') navLightbox(-1, {stopPropagation:()=>{}});
+});
+
+function copyAcct(){
+  navigator.clipboard.writeText('1229162027').then(()=>showToast('Account number copied!')).catch(()=>showToast('Account: 1229162027'));
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+function handleContact(){
+  const name=document.getElementById('c-name').value.trim();
+  const email=document.getElementById('c-email').value.trim();
+  const msg=document.getElementById('c-message').value.trim();
+  if(!name||!email||!msg){showToast('Please complete all fields.');return;}
+  showToast('Message received! We\'ll reply to '+email+' soon.');
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+buildGallery('all');
+</script>
+</body>
+</html>
