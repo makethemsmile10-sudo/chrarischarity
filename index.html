@@ -761,7 +761,7 @@ footer a:hover{color:var(--orange)}
     <span>Charis Charity Organization</span>
   </div>
   <p>© 2026 · Nigeria & United Kingdom · <a href="mailto:makethemsmile10@gmail.com">makethemsmile10@gmail.com</a> · <a href="https://www.instagram.com/_makethemsmile" target="_blank">@_makethemsmile</a></p>
-  <p style="margin-top:0.5rem"><a href="privacy-policy.html">Privacy Policy</a> · <span style="color:rgba(255,255,255,0.2)">CAC Reg. No. 195863</span></p>
+  <p style="margin-top:0.5rem"><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms & Conditions</a> · <span style="color:rgba(255,255,255,0.2)">CAC Reg. No. 195863</span></p>
 </footer>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
@@ -775,6 +775,18 @@ footer a:hover{color:var(--orange)}
 <div class="vol-lightbox" id="volLightbox" onclick="closeVolLightbox(event)">
   <button class="vol-lightbox-close" onclick="document.getElementById('volLightbox').classList.remove('open');document.body.style.overflow=''"><i class="ti ti-x"></i></button>
   <img id="volLightboxImg" src="" alt="Volunteer story">
+</div>
+
+
+<!-- COOKIE CONSENT BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">
+    <p><strong>🍪 We use cookies</strong> — We use essential cookies to make our website work and analytics cookies to understand how visitors use our site. By clicking "Accept", you agree to our use of cookies. <a href="privacy-policy.html">Learn more in our Privacy Policy</a>.</p>
+  </div>
+  <div class="cookie-buttons">
+    <button class="cookie-decline" onclick="declineCookies()">Essential only</button>
+    <button class="cookie-accept" onclick="acceptCookies()">Accept all</button>
+  </div>
 </div>
 
 <a href="#donate" class="float-donate" id="floatDonate"><i class="ti ti-heart"></i><span>Donate</span></a>
@@ -912,6 +924,25 @@ function showToast(msg){const t=document.getElementById("toast");t.textContent=m
 function toggleMenu(){document.getElementById("mobileMenu").classList.toggle("open");}
 function closeMenu(){document.getElementById("mobileMenu").classList.remove("open");}
 document.querySelectorAll("a[href^='#']").forEach(a=>{a.addEventListener("click",e=>{e.preventDefault();closeMenu();const t=document.querySelector(a.getAttribute("href"));if(t)t.scrollIntoView({behavior:"smooth"});});});
+
+
+// COOKIE CONSENT
+function showCookieBanner(){
+  if(!localStorage.getItem('cookieConsent')){
+    setTimeout(()=>document.getElementById('cookieBanner').classList.add('show'), 1500);
+  }
+}
+function acceptCookies(){
+  localStorage.setItem('cookieConsent','accepted');
+  document.getElementById('cookieBanner').classList.remove('show');
+  showToast('Cookie preferences saved!');
+}
+function declineCookies(){
+  localStorage.setItem('cookieConsent','essential');
+  document.getElementById('cookieBanner').classList.remove('show');
+  showToast('Essential cookies only saved!');
+}
+showCookieBanner();
 
 buildGallery("all");
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{});});}
